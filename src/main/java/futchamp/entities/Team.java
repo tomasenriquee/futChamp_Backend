@@ -1,14 +1,29 @@
 package futchamp.entities;
 
+import static futchamp.literals.Keys.FK_LEAGUE_TEAM;
+import static futchamp.literals.Keys.ID_LEAGUE;
+import static futchamp.literals.Keys.MAPPEDBY_TEAM;
+import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.CascadeType.DETACH;
+import static javax.persistence.CascadeType.MERGE;
+import static javax.persistence.CascadeType.PERSIST;
+import static javax.persistence.CascadeType.REFRESH;
+
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import futchamp.configuration.Auditable;
 
@@ -43,6 +58,19 @@ public class Team extends Auditable implements Serializable {
 	 * Imagen del equipo
 	 */
 	private String picture;
+
+	/**
+	 * Relacion N:1 desde League
+	 */
+	@ManyToOne(targetEntity = League.class, fetch = FetchType.EAGER, cascade = { MERGE, DETACH, PERSIST, REFRESH })
+	@JoinColumn(name = ID_LEAGUE, foreignKey = @ForeignKey(name = FK_LEAGUE_TEAM), nullable = false)
+	private League league;
+
+	/**
+	 * Relacion de 1:N hacia Player
+	 */
+	@OneToMany(mappedBy = MAPPEDBY_TEAM, cascade = ALL, fetch = FetchType.LAZY, targetEntity = Player.class)
+	private List<Player> players;
 
 	public Team() {
 		super();
@@ -81,4 +109,11 @@ public class Team extends Auditable implements Serializable {
 		this.picture = picture;
 	}
 
+	public League getLeague() {
+		return league;
+	}
+
+	public void setLeague(League league) {
+		this.league = league;
+	}
 }
