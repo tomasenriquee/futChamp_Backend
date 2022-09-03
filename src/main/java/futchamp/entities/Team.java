@@ -49,6 +49,9 @@ public class Team extends Auditable implements Serializable {
 	@Column(length = 150, unique = true)
 	private String name;
 
+	/** Categoria de futbol del equipo */
+	private String category;
+
 	/**
 	 * Fecha de creación del equipo
 	 */
@@ -107,6 +110,14 @@ public class Team extends Auditable implements Serializable {
 
 	public void setPicture(String picture) {
 		this.picture = picture;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 	public League getLeague() {
