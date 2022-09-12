@@ -1,5 +1,6 @@
 package futchamp.controllersAPI;
 
+import static futchamp.literals.Links.ID_LEAGUE;
 import static futchamp.literals.Links.LEAGUE;
 import static futchamp.literals.Links.SLASH;
 import static futchamp.literals.Qualifiers.SER_LEAGUE;
@@ -47,7 +48,7 @@ public class CTLeagueController {
 	}
 
 	/** futchamp/V2/league/{idLeague} */
-	@DeleteMapping(SLASH + "{idLeague}")
+	@DeleteMapping(ID_LEAGUE)
 	public ResponseEntity<?> deleteLeague(@PathVariable Long idLeague) {
 		return leagueDaoImp.deleteElementListUG(idLeague);
 	}

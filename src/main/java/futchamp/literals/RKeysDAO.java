@@ -7,5 +7,7 @@ package futchamp.literals;
 public interface RKeysDAO {
 
 	String DAO_LEAGUE = "dao_league";
+    String DAO_TEAM = "dao_team";
+    String DAO_PLAYER = "dao_player";
 
 }

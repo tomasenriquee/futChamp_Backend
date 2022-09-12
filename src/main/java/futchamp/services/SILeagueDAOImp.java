@@ -22,7 +22,7 @@ import futchamp.utilities.UGService;
 @Service(SER_LEAGUE)
 public class SILeagueDAOImp implements SILeagueDAO, UGService<League> {
 
-	/**  */
+	/** Log para mensajes por consola */
 	private static final Logger logLeague = LoggerFactory.getLogger(SILeagueDAOImp.class);
 
 	/** Inyección para realizar CRUD a la BBDD de LEAGUE */

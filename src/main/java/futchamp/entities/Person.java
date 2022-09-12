@@ -58,7 +58,7 @@ public class Person {
     /**
      * Número de telefono movil
      */
-    @Column(length = 20)
+    @Column(length = 20, unique = true)
     private String mobile;
 
     /**

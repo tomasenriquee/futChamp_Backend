@@ -2,6 +2,10 @@ package futchamp.entities;
 
 import static futchamp.literals.Keys.MAPPEDBY_LEAGUE;
 import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.CascadeType.DETACH;
+import static javax.persistence.CascadeType.MERGE;
+import static javax.persistence.CascadeType.PERSIST;
+import static javax.persistence.CascadeType.REFRESH;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -42,9 +46,9 @@ public class League extends Auditable implements Serializable {
 	/** Imagen de la liga */
 	private String picture;
 
-	  /** Relacion 1:N hacia Team */
-    @OneToMany(mappedBy = MAPPEDBY_LEAGUE, cascade = ALL, fetch = FetchType.LAZY, targetEntity = Team.class)
-    private List<Team> teams;
+	/** Relacion 1:N hacia Team */
+	@OneToMany(mappedBy = MAPPEDBY_LEAGUE, cascade = ALL, fetch = FetchType.LAZY, targetEntity = Team.class)
+	private List<Team> teams;
 
 	public League() {
 		super();

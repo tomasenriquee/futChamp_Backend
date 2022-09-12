@@ -75,6 +75,7 @@ public class Team extends Auditable implements Serializable {
 	@OneToMany(mappedBy = MAPPEDBY_TEAM, cascade = ALL, fetch = FetchType.LAZY, targetEntity = Player.class)
 	private List<Player> players;
 
+
 	public Team() {
 		super();
 		// TODO Auto-generated constructor stub
